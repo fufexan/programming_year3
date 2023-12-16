@@ -1,0 +1,90 @@
+<!doctype html>
+
+<!--
+3. Dezvoltați o pagină web cu facilități JavaScript care definește o grilă dreptunghiulară (componente div
+alăturate, dispuse matricial; dimensiunea grilei este prestabilită). Elementul din stânga sus este colorat diferit.
+Definiți 4 taste la apăsarea cărora elementul colorat “se mută” pe celula imediat următoare din stânga,
+dreapta, sus sau jos (doar dacă mișcarea este posibilă).
+-->
+
+<html>
+  <head>
+    <script>
+      const m = 15;
+      const n = 10;
+
+      let x = 0;
+      let y = 0;
+
+      const elems = 100 / m;
+      const side = 100 / Math.max(m, n);
+
+      const cellStyle = `
+        width: ${elems}%;
+        flex: 0 ${elems}%;
+        padding-bottom: ${elems}%;
+        background-color: bisque;
+        box-shadow: inset 0 0 0 .5px black;
+      `;
+
+      function clamp(x, max) {
+        if (x < 0) x = 0;
+        else if (x >= max) x = max - 1;
+        return x;
+      }
+
+      function move(e) {
+        const validKeys = ["ArrowUp", "ArrowDown", "ArrowLeft", "ArrowRight"];
+
+        if (!validKeys.some((k) => k == e.key)) return;
+
+        const currentElem = document.getElementById(`l${y}c${x}`);
+
+        switch (e.key) {
+          case "ArrowRight":
+            x = clamp(++x, m);
+            break;
+          case "ArrowLeft":
+            x = clamp(--x, m);
+            break;
+          case "ArrowUp":
+            y = clamp(--y, n);
+            break;
+          case "ArrowDown":
+            y = clamp(++y, n);
+        }
+
+        const nextElem = document.getElementById(`l${y}c${x}`);
+
+        currentElem.style.backgroundColor = "bisque";
+        nextElem.style.backgroundColor = "pink";
+      }
+
+      function run() {
+        const body = document.body;
+
+        body.innerHTML += `<div id="container"></div>`;
+        const container = document.getElementById(`container`);
+
+        container.style.display = "flex";
+        container.style.flexWrap = "wrap";
+        container.style.width = `${side * m}vh`;
+
+        // add elements
+        for (let i = 0; i < n; i++) {
+          for (let j = 0; j < m; j++) {
+            container.innerHTML += `<div id="l${i}c${j}" style="${cellStyle}"></div>`;
+          }
+        }
+
+        // starting element
+        document.getElementById("l0c0").style.backgroundColor = "pink";
+
+        // add eventListener
+        window.addEventListener("keydown", move);
+      }
+    </script>
+  </head>
+
+  <body onLoad="run()"></body>
+</html>

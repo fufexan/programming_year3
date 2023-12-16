@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>Expresii lambda JS</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<link rel="stylesheet" href="http://helios.utcluj.ro/cosmin/WEB/CSS/style.css">
+
+<script>
+
+salutare = () => { return "Salutare :)"}
+
+suma = (a, b) => (a + b); //expresie lambda condensata
+
+
+textAfisat = ""; //variabila de tip text, folosita la output
+
+function f1(){	
+
+	textAfisat += "<br><br>apelul functiei salutare(): " + salutare();
+	textAfisat += "<br><br>apelul functiei suma(5, 6): " + suma(5, 6);
+	
+	displayer.innerHTML = textAfisat;
+}
+
+
+
+</script>
+
+</head>
+
+<body onLoad="f1()">
+
+<div id="displayer">
+
+</div>
+
+
+</body>
+</html>

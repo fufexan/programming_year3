@@ -1,0 +1,34 @@
+<!doctype html>
+<!--
+1. Dezvoltați o pagină web cu facilități JavaScript care obține o referință la o componentă de tip div
+existentă în pagină. Folosind referința,
+- modificați culoarea de background a componentei
+- afișați în componentă un text predefinit
+- afișați în componentă
+  - un alt element de tip div
+  - un text încapsulat într-un tag p
+  - o imagine cu referința spre o resursă web
+-->
+
+<html>
+  <head>
+    <script>
+      const run = () => {
+        let div = document.getElementById("displayer");
+
+        div.style.background_color = "honeydew";
+
+        const predefinedText = "Welcome to the page!";
+        div.innerHTML += predefinedText;
+
+        div.innerHTML += `<div style="background-color: bisque">Here's another div</div>`;
+        div.innerHTML += `<p style="background-color: aquamarine">This is a paragraph! How cool is that?!</p>`;
+        div.innerHTML += `<img src="https://i.imgflip.com/5vlrok.jpg?a472724" width=300px alt="One doesn't know JS, while the other does" />`;
+      };
+    </script>
+  </head>
+
+  <body onLoad="run()">
+    <div id="displayer"></div>
+  </body>
+</html>

@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>Metode numerice JS</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<link rel="stylesheet" href="http://helios.utcluj.ro/cosmin/WEB/CSS/style.css">
+
+<script>
+
+x = 7;
+y = 7.89;
+
+textAfisat = ""; //variabila de tip text, folosita la output
+
+function f1(){
+
+	displayer = document.getElementById("displayer");
+
+	textAfisat += "<br><br> x = " + x;
+	textAfisat += "<br><br> y = " + y;
+
+	textAfisat += "<hr>";
+
+	x_text = x.toString();
+
+	textAfisat += "<br><br>x.toString() = " + x_text + " (" + typeof(x_text) +")"; 
+	textAfisat += "<br><br>y.toExponential(2) = " + y.toExponential(2);
+	textAfisat += "<br><br>y.toExponential(4) = " + y.toExponential(4);
+	textAfisat += "<br><br>y.toFixed(0) = " + y.toFixed(0);	
+	textAfisat += "<br><br>y.toFixed(1) = " + y.toFixed(1);
+	textAfisat += "<br><br>y.toFixed(2) = " + y.toFixed(2);
+	textAfisat += "<br><br>y.toFixed(4) = " + y.toFixed(4);
+	textAfisat += "<br><br>y.toPrecision() = " + y.toPrecision();
+	textAfisat += "<br><br>y.toPrecision(1) = " + y.toPrecision(1);
+	textAfisat += "<br><br>y.toPrecision(2) = " + y.toPrecision(2);
+	textAfisat += "<br><br>y.toPrecision(4) = " + y.toPrecision(4);
+	textAfisat += "<br><br>parseInt(\"777\") = " + parseInt("777") + " (" + typeof(parseInt("777")) + ")";
+	textAfisat += "<br><br>parseInt(\"7.89\") = " + parseInt("7.89") + " (" + typeof(parseInt("7.89")) + ")";	
+
+	displayer.innerHTML = textAfisat;
+}
+
+</script>
+
+</head>
+
+<body onLoad="f1()">
+
+<div id="displayer">
+
+</div>
+
+
+</body>
+</html>

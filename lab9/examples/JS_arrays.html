@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>Siruri JS</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<link rel="stylesheet" href="http://helios.utcluj.ro/cosmin/WEB/CSS/style.css">
+
+<script>
+
+var masini = ["Volvo", "Kia", "Renault"];
+var fructe = new Array("mere", "pere");
+var ocupatii = {"o1": "sef", "doi":"sportiv"}; //pseudo sir asociativ, de fapt e obiect 
+                                                                     
+textAfisat = ""; //variabila de tip text, folosita la output
+
+var temp = "";
+
+function f1(){
+
+	displayer = document.getElementById("displayer");
+
+	textAfisat += "<br><br> afisare implicita = " + masini + ", " + fructe + ", " + ocupatii;
+	textAfisat += "<br><br> afisare iterativa V1 ";
+	for(i=0; i<masini.length; i++)
+		textAfisat += masini[i] + " ";
+
+	fructe.push("portocale"); //inserare de elemente la sfarsit
+	fructe.push("banane");
+
+	textAfisat += "<br><br> afisare iterativa V2 ";
+	for(i=0; i<fructe.length; i++)
+		textAfisat += fructe[i] + " ";
+
+	fructe.pop(); //stergerea ultimului element
+
+	//textAfisat += "<hr>";
+	textAfisat += "<br><br> afisare iterativa V3 ";
+	for(crt_elem in fructe)
+		textAfisat += fructe[crt_elem] + " ";
+
+	fructe.shift(); //stergerea primului element
+	
+	textAfisat += "<br><br> afisare iterativa V4 ";
+	fructe.forEach(afisare);
+	textAfisat += temp;
+
+	//cautarea unui anumit element in sir
+	element_gasit = fructe.find(cautare);
+	textAfisat += "<br><br> primul fruct care incepe cu 'p': ";
+	textAfisat += element_gasit;
+
+	//adaugarea de elemente in sir
+	fructe.splice(1, 0, "cirese", "gutui");
+	temp = "";
+	textAfisat += "<br><br> sirul dupa adaugarea noilor elemente: ";
+	fructe.forEach(afisare);
+	textAfisat += temp;
+
+	//ordonare alfabetica
+	fructe.sort();
+	temp = "";
+	textAfisat += "<br><br> sirul de fructe ordonat alfabetic: ";
+	fructe.forEach(afisare);
+	textAfisat += temp;
+
+	//ordonare dupa lungimea cuvintelor
+	fructe.sort(ordonareLungimeCuvinte);
+	temp = "";
+	textAfisat += "<br><br> sirul de fructe ordonat dupa lungimea cuvintelor: ";
+	fructe.forEach(afisare);
+	textAfisat += temp;
+
+
+	displayer.innerHTML = textAfisat;
+}
+
+function afisare(val, index){
+	//index se transmite ca parametru, poate fi folosit
+	temp += val + " ";
+}
+
+function cautare(value, index, array){
+	if(value[0]=='p'){
+		//alert("elementul a fost gasit pe pozitia " + index); //afisarea pozitiei, poate fi folosita
+		return 1;
+	}
+	return 0;
+}
+
+function ordonareLungimeCuvinte(a, b){
+	if(a.length > b.length)
+		return 1;
+	if(a.length == b.length)
+		return 0;
+	if(a.length < b.length)
+		return -1;
+}
+
+</script>
+
+</head>
+
+<body onLoad="f1()">
+
+<div id="displayer">
+
+</div>
+
+
+</body>
+</html>

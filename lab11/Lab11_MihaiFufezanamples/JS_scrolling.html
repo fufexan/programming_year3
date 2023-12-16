@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+<title>Scrolling JS</title>
+
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<link rel="stylesheet" href="http://helios.utcluj.ro/cosmin/WEB/CSS/style.css">
+
+<script>
+
+	var my_div, my_div1;
+	var go4it = true;
+	var go4it1 = true;
+	var delay;
+	var step;
+	var scroll_height;
+	var scroll_width;
+
+
+
+	function init(){
+		my_div = document.getElementById("my_div");
+		scroll_height = my_div.scrollHeight;
+		my_div1 = document.getElementById("my_div1");
+		scroll_width = my_div1.scrollWidth;
+		step = 1;
+		delay = 5;
+
+		//alert(scroll_height);
+	}
+
+	function scrollIt(){
+		
+		if(go4it){
+			previous_position = my_div.scrollTop;
+			my_div.scrollTop += step;
+			new_position = my_div.scrollTop;
+			if(new_position!=previous_position){
+				setTimeout("scrollIt()", delay);
+			}
+		}
+		
+	}
+
+	function scrollIt1(){
+		
+		if(go4it1){
+			previous_position = my_div1.scrollLeft;
+			my_div1.scrollLeft += step;
+			new_position = my_div1.scrollLeft;
+			if(new_position!=previous_position){
+				setTimeout("scrollIt1()", delay);
+			}
+		}
+		
+	}
+
+	function f1(){
+		go4it = true;
+		step = Math.abs(step);
+		scrollIt();
+	}
+
+	
+
+	function f11(){
+
+		go4it = false;
+		
+	}
+
+	function f2(){
+		go4it = true;
+		step = (-1)*Math.abs(step);
+		scrollIt();	
+	}
+
+	function f21(){
+		go4it = false;		
+	}
+
+	function f3(){
+		go4it1 = true;
+		step = Math.abs(step);
+		scrollIt1();
+	}
+
+	
+
+	function f31(){
+
+		go4it1 = false;
+		
+	}
+
+	function f4(){
+		go4it1 = true;
+		step = (-1)*Math.abs(step);
+		scrollIt1();	
+	}
+
+	function f41(){
+		go4it1 = false;		
+	}
+	
+
+	function setScrollingSpeed(select_field){
+		step = parseInt(select_field.options[select_field.selectedIndex].value);
+	}
+
+
+
+</script>
+
+</head>
+
+<body onLoad="init()">
+
+Scrolling pe continutul unui DIV pe evenimentul OnMouseOver generat de campuri de tip adresa
+<HR>
+<BR>
+
+
+
+	<a href="#" OnMouseOver="f1();" OnMouseOut="f11();">Scroll down</a><BR><BR>
+
+	<div id="my_div" style="overflow:auto; padding: 3px; background-color: #555555; width: 200px; height: 60px; border=1px solid #FF0000;">
+		<div id="inner_div">
+
+		fereastra cu text<BR>
+		fereastra cu text<BR>
+		fereastra cu text<BR>
+		fereastra cu text<BR>
+		fereastra cu text<BR>
+		fereastra cu text<BR>
+		fereastra cu text<BR>
+		<B>SI IMAGINI</B>
+		<img src="http://helios.utcluj.ro/cosmin/WEB/IMG/jack.jpg" width="100">
+
+		</div>
+
+	</div>
+	
+	<BR><a href="#" OnMouseOver="f2();" OnMouseOut="f21();">Scroll top</a><BR><BR>	
+
+
+	<a href="#" OnMouseOver="f3();" OnMouseOut="f31();">Scroll right</a><BR><BR>
+
+	<div id="my_div1" style="overflow:auto; padding: 3px; background-color: #555555; width: 200px; height: 100px; border=1px solid #FF0000;">
+		<div id="inner_div1" style="width: 600px;">
+
+		<table>
+		<tr>
+		<td valign="top">
+		fereastra cu alt text si un scrolling orizontal . .. ... -> => 
+		</td>
+		<td>
+		<img src="http://helios.utcluj.ro/cosmin/WEB/IMG/jack.jpg" width="100">
+		</td>
+		</tr>
+		</table>
+
+		</div>
+
+	</div>
+	
+	<BR><a href="#" OnMouseOver="f4();" OnMouseOut="f41();">Scroll left</a><BR><BR>
+
+	<BR><BR>
+	viteza de scrolling
+	<select id="scrolling_speed" OnChange="setScrollingSpeed(this);">
+	<option value="1">1
+	<option value="3">3
+	<option value="5">5
+	<option value="7">7
+	</select>
+
+
+</body>
+</html>

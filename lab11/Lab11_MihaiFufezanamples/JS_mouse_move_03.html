@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+<title>Mouse move JS</title>
+
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<link rel="stylesheet" href="http://helios.utcluj.ro/cosmin/WEB/CSS/style.css">
+
+<script>
+
+var my_div;
+
+var IE = document.all?true:false;
+
+if (!IE) 
+	document.captureEvents(Event.MOUSEMOVE);
+
+document.onmousemove = getMouseXY;
+
+var tempX;
+var tempY;
+
+function getMouseXY(e) {
+
+	if (IE) {
+		tempX = event.clientX + document.body.scrollLeft;
+		tempY = event.clientY + document.body.scrollTop;
+	} 
+	else {
+		tempX = e.pageX;
+		tempY = e.pageY;
+	}  
+
+	f1(tempX, tempY);
+}	
+
+
+
+function init(){
+	my_div = document.getElementById("my_div");
+}
+
+function f1(x, y){
+			
+	my_div.innerHTML = "Pozitia curenta a pointerului de mouse: "+x+", "+y;
+
+	red_amount = Math.round(255*(screen.height - y)/screen.height);
+	//alert(red_amount);
+
+	cifra1 = Math.floor(red_amount/16);
+	cifra2 = red_amount%16;
+
+	hex_symbols = new Array();
+	hex_symbols[10] = 'A';
+	hex_symbols[11] = 'B';
+	hex_symbols[12] = 'C';
+	hex_symbols[13] = 'D';
+	hex_symbols[14] = 'E';
+	hex_symbols[15] = 'F';
+
+	if(cifra1>9)
+		cifra1 = hex_symbols[cifra1];
+	if(cifra2>9)
+		cifra2 = hex_symbols[cifra2];
+
+	var red = "#"+cifra1+cifra2+"0000";
+
+	//alert(red);
+
+	document.body.style.background = red;
+}
+
+</script>
+
+</head>
+
+<body onLoad="init()">
+
+Detectarea miscarii mouse-ului, afisarea coordonatelor pointerului si schimbarea atributelor documentului
+<HR>
+<BR>
+
+	<div id="my_div"></div>
+
+
+</body>
+</html>

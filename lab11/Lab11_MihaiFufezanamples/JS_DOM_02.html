@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+<title>DOM JS</title>
+
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<link rel="stylesheet" href="http://helios.utcluj.ro/cosmin/WEB/CSS/style.css">
+
+<script>
+
+function changeDivStyles() {
+	var border_width = 1;
+	var page_divs = document.getElementsByTagName("div");
+	for(crt_div of page_divs){
+		crt_div.setAttribute("style", "border: " + border_width+"px solid orange;");
+		border_width++;
+	}
+}	
+
+</script>
+
+</head>
+
+<body onLoad="changeDivStyles()">
+
+Elemente DOM controlate prin JS
+<hr>
+<br>
+
+	<div>text in div</div>
+	<div>alt text in div</div>
+	<div>inca un text in div</div>
+	<div>si alt text in div</div>
+	<div>continuam cu acest text in div</div>
+	<div>urmat de inca un text in div </div>
+	<div>si apoi ultimul text in div</div>
+	
+
+</body>
+</html>

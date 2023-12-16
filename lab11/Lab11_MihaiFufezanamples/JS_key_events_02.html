@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+<title>Evenimente de tastatura JS</title>
+
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<link rel="stylesheet" href="http://helios.utcluj.ro/cosmin/WEB/CSS/style.css">
+
+<script>
+
+	document.onkeydown = keyProcess;
+
+	var increment = 10;
+	
+	function keyProcess(evt) {
+		var this_key = (evt) ? evt.which : window.event.keyCode;
+
+		var layer = document.getElementById("layer0");
+		
+
+		if(this_key==37){
+			temp = parseInt(layer.style.left.substr(0, layer.style.left.length-2));
+			temp -= increment;
+			layer.style.left = temp+"px";
+		}
+		
+		if(this_key==38){
+			temp = parseInt(layer.style.top.substr(0, layer.style.top.length-2));
+			temp -= increment;
+			layer.style.top = temp+"px";
+		}
+	
+		if(this_key==39){
+			temp = parseInt(layer.style.left.substr(0, layer.style.left.length-2));
+			temp += increment;
+			layer.style.left = temp+"px";
+		}
+
+		if(this_key==40){
+			temp = parseInt(layer.style.top.substr(0, layer.style.top.length-2));
+			temp += increment;
+			layer.style.top = temp+"px";
+		}
+
+	}
+
+
+</script>
+
+</head>
+
+<body>
+
+Fereastra din document poate fi repozitionata cu ajutorul cursorului
+<HR>
+<BR>
+
+<div id="layer0" style="position:absolute; left:200px; top:200px; width:100px; z-index: 1; visibility:visible">
+
+	<img src="http://helios.utcluj.ro/cosmin/WEB/IMG/jack.jpg" width="100">
+
+</div>
+
+
+</body>
+</html>

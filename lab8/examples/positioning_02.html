@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>Pozitionari</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<link rel="stylesheet" href="http://helios.utcluj.ro/cosmin/WEB/CSS/style.css">
+
+<style>
+
+.static_positioning{
+	border: 1px solid #00AA00;
+}
+
+.relative_positioning {
+	position: relative;
+	border: 1px solid red;
+}
+
+.absolute_positioning {
+	position: absolute;
+	border: 1px solid orange;
+	background-color: #555555;
+}
+
+.fixed_positioning{
+	position: fixed;
+	border: 1px solid rgba(0, 100, 100);
+	background-color: #444444;
+}
+
+.sticky_positioning{
+	position: -webkit-sticky;
+	position: sticky;
+	border: 1px solid rgba(100, 100, 100);
+	background-color: #777777;
+}
+
+.inline_block{
+	display: inline-block;
+}
+
+.block{
+	display: block;
+}
+
+</style>
+
+</head>
+
+<body>
+<br><br><br>
+<div class="sticky_positioning inline_block" style="top: 0px;">pozitionare sticky</div>
+<div class="sticky_positioning block" style="top: 50px;">pozitionare sticky</div>
+
+<div>containere care au pozitionare implicita (position: static)
+	<div class="static_positioning inline_block">1</div>
+	<div class="static_positioning inline_block">2</div>
+	<div class="static_positioning inline_block">3</div>
+	<div class="static_positioning block">4</div>
+	<div class="static_positioning block">5</div>
+	<div class="static_positioning block">6</div>
+	<div class="static_positioning block">7</div>
+	<div class="static_positioning">8</div>
+	<div class="static_positioning">9</div>
+	<div class="static_positioning">10</div>
+</div>
+
+<div>containere care au pozitionare relativa (position: relative)
+	<div class="relative_positioning inline_block">1</div>
+	<div class="relative_positioning inline_block">2</div>
+	<div class="relative_positioning inline_block">3</div>
+	<div class="relative_positioning block">4</div>
+	<div class="relative_positioning block">5</div>
+	<div class="relative_positioning block">6</div>
+	<div class="relative_positioning block">7</div>
+	<div class="relative_positioning">8</div>
+	<div class="relative_positioning">9</div>
+	<div class="relative_positioning">10</div>
+</div>
+
+<div class="absolute_positioning inline_block" style="left: 200px; top: 50px;">pozitionare absoluta</div>
+<div class="absolute_positioning block" style="left: 300px; top: 150px;">pozitionare absoluta</div>
+
+<div class="fixed_positioning inline_block" style="right: 0px; top: 50px;">pozitionare fixa</div>
+<div class="fixed_positioning block" style="right: 0px; top: 100px;">pozitionare fixa</div>
+
+
+
+
+</body>
+</html>

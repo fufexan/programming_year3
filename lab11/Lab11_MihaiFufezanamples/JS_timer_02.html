@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+<title>Timer JS</title>
+
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<link rel="stylesheet" href="http://helios.utcluj.ro/cosmin/WEB/CSS/style.css">
+
+<script>
+
+	var count = 0;
+	var text = "scriu acest text automat... ";
+	var delay;
+
+
+	function startTimer(){
+
+		var speed = document.getElementById("speed");
+		delay = speed.options[speed.selectedIndex].value;
+
+		setTimeout('writer()', delay);
+	}
+
+	function changeSpeed(){
+
+		var speed = document.getElementById("speed");
+		delay = speed.options[speed.selectedIndex].value;
+
+		setTimeout('writer()', delay);
+	}
+
+	function writer(){
+		var my_div = document.getElementById("my_div");
+		my_div.innerHTML += text.charAt(count%text.length);
+		count++;
+		
+
+
+		setTimeout('writer()', delay);
+	}
+
+</script>
+
+</head>
+
+<body onLoad="startTimer()">
+
+Ilustrarea functionarii setarilor de timer
+
+<HR>
+<BR>
+	Viteza de scriere
+	<select id="speed" OnChange="changeSpeed();">
+		<option value="500">v1
+		<option value="300">v2
+		<option value="200">v3
+		<option value="100">v4
+		<option value="10">FAAAST
+	</select>
+	<BR>
+
+	<div id="my_div" ></div>
+	
+
+
+</body>
+</html>

@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>Functii anonime JS</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<link rel="stylesheet" href="http://helios.utcluj.ro/cosmin/WEB/CSS/style.css">
+
+<script>
+
+//anonymous V1
+var x = function(a, b) {
+	return (a+b);
+}
+var rez = x(3, 4);
+
+var m = 5, n = 6;
+
+//anonymous V2
+var rez1 = (function (){
+		return 5*6;
+	}());
+
+var rez2 = (function(x, y){
+		return (x + y);
+	}
+	(m, n)
+	);
+
+
+function f1(){
+
+	displayer = document.getElementById("displayer");
+
+	displayer.innerHTML = "rez = " + rez + ", rez1 = " + rez1 + ", rez2 = " + rez2;
+}
+
+</script>
+
+</head>
+
+<body onLoad="f1()">
+
+<div id="displayer">
+
+</div>
+
+
+</body>
+</html>

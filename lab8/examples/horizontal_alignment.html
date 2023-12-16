@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>Aliniere pe orizontala</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<link rel="stylesheet" href="http://helios.utcluj.ro/cosmin/WEB/CSS/style.css">
+
+<style>
+
+div{
+	border: 1px solid red;
+	margin: 3px;
+}
+
+.center {
+	text-align: center;
+}
+
+.right_01 {
+	text-align: right;
+}
+
+.right_02{
+	float: right;
+	xposition: relative;
+	border: 1px solid orange;
+}
+
+.clear:after {
+	clear: both;
+	display: block;
+	content: "";
+}
+
+.right_03{
+	display: inline-block;
+	position: absolute;
+	border: 1px solid yellow;
+	right: 0px;
+	top: 0px;
+}
+
+
+</style>
+
+</head>
+
+<body>
+
+<div>
+	aliniere implicita 
+</div>
+
+<div class="center">
+	text centrat pe orizontala
+</div>
+
+<div class="clear" style="position: relative;">
+	<div class="right_02">
+		aliniere la dreapta
+		<img src="jack.jpg">
+	</div>
+</div>
+
+
+<div style="position: relative;">
+	<div class="right_03">
+		inca o aliniere la dreapta
+		<img src="jack.jpg">
+	</div>
+</div>
+
+
+
+</body>
+</html>

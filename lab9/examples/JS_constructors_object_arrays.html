@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>Constructori JS</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<link rel="stylesheet" href="http://helios.utcluj.ro/cosmin/WEB/CSS/style.css">
+
+<script>
+
+//functie constructor
+function Student(nume, varsta){
+	//definirea atributelor
+	this.nume = nume; 
+	this.varsta = varsta;
+
+	//definirea metodelor
+	this.saluta = function(){
+		return "Salut, ma numesc " + this.nume;
+	}
+}
+
+textAfisat = ""; //variabila de tip text, folosita la output
+
+function f1(){	
+
+	displayer = document.getElementById("displayer");
+
+	grupa = [];
+	grupa.push(new Student("Ana", 22));
+	grupa.push(new Student("Ion", 222));
+	grupa[2] = new Student("Vasile", "???");
+
+	textAfisat += "<br><br>atributele studentilor: ";
+	
+	for(i in grupa){
+		textAfisat += "<br>";
+		attr = Object.keys(grupa[i]);
+		for(j in attr){
+			textAfisat += attr[j] + ": ";
+			if(typeof(grupa[i][attr[j]]) != "function")
+				textAfisat += grupa[i][attr[j]] + ", ";
+			else
+				textAfisat += grupa[i][attr[j]]();	
+
+		}
+		
+	}
+
+	//adaugarea unei noi metode doar pt. un obiect
+	grupa[0].functia = function(){
+		return "seful grupei";
+	}
+
+	for(i in grupa){
+		if(typeof(grupa[i].functia) === "function")
+			textAfisat += "<br>" + "studentul cu index " + i + " are functia: " + grupa[i].functia();
+	}
+
+	displayer.innerHTML = textAfisat;
+}
+
+
+
+</script>
+
+</head>
+
+<body onLoad="f1()">
+
+<div id="displayer">
+
+</div>
+
+
+</body>
+</html>

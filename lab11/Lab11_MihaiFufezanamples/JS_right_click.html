@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+<title>Right click</title>
+
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<link rel="stylesheet" href="http://helios.utcluj.ro/cosmin/WEB/CSS/style.css">
+
+<script>
+
+var IE = document.all?true:false;
+
+if (!IE) document.captureEvents(Event.MOUSEMOVE);
+
+document.onmousemove = getMouseXY;
+
+var tempX = 0;
+var tempY = 0;
+
+function getMouseXY(e) {  
+	tempX = e.pageX;
+	tempY = e.pageY;
+
+	return true;
+}
+
+document.onmousedown=f1;
+document.onmouseup=f1;
+if (document.layers) window.captureEvents(Event.MOUSEDOWN);
+if (document.layers) window.captureEvents(Event.MOUSEUP);
+window.onmousedown=f1;
+window.onmouseup=f1;
+
+function f1(e){
+	var div = document.getElementById("float_div");
+
+	if (!IE&&(e.which==3)){
+		div.style.left = tempX+"px";
+		div.style.top = tempY+"px";
+	}
+	else
+		if (IE&&(window.event.button==2)){
+			div.style.left = tempX+"px";
+			div.style.top = tempY+"px";
+		}
+		else
+			return true;
+}
+
+</script>
+
+</head>
+
+<body oncontextmenu="return false;">
+
+<div id="float_div" style="position: absolute; width: 100px; height: 100px; border: 1px solid red; top:0; left:0;">
+
+</div>
+
+Right click contextual eliminat...
+
+</body>
+</html>

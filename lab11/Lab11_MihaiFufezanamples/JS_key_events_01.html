@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+<title>Evenimente de tastatura JS</title>
+
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<link rel="stylesheet" href="http://helios.utcluj.ro/cosmin/WEB/CSS/style.css">
+
+<script>
+
+	document.onkeydown = keyProcess;
+
+	
+	function keyProcess(evt) {
+		var this_key = (evt) ? evt.which : window.event.keyCode;
+		//alert(this_key);
+
+		var input = document.getElementById("input");
+		var output = document.getElementById("output");
+		output.value += this_key + " ";
+
+		if(this_key==13){
+			alert('ENTER');
+		}
+	}
+
+
+</script>
+
+</head>
+
+<body>
+
+Sunt detectate evenimentele de keyboard si sunt afisate codurile ASCII ale tastelor apasate
+<HR>
+<BR>
+
+
+Scrie un text...
+<BR><textarea cols="77" rows="10" id="input"></textarea><BR>
+<BR>
+
+Codurile ASCII ale caracterelor de mai sus...
+<BR><textarea cols="77" rows="10" id="output"></textarea><BR>
+<BR>
+
+
+</body>
+</html>

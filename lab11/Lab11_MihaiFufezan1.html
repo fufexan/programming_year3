@@ -1,0 +1,125 @@
+<!doctype html>
+
+<!--
+1. Dezvoltați o pagină web cu facilități JavaScript care pozitionează la mijlocul ecranului
+o componentă "div" cu latura de 100 de pixeli, umplută cu roșu. Cand mouse-ul se află deasupra componentei,
+aceasta este colorată cu albastru.
+1'. Schimbați culoarea componentei progresiv (setTimeout, setInterval).
+1". Culoarea componentei este închisă/deschisă pe masură ce cursorul mouse-ului se apropie de componentă.
+-->
+
+<html>
+  <head>
+    <script>
+      let body, cb, btn;
+      let cb_x, cb_y;
+      let current_mode = "approach";
+
+      function getColorboxCoords() {
+        const rect = cb.getBoundingClientRect();
+        cb_x = rect.x + rect.width / 2;
+        cb_y = rect.y + rect.height / 2;
+      }
+
+      function hover(isHover) {
+        let red = isHover ? 250 : 0; // Reverse the colors for hover lost
+        let blue = isHover ? 0 : 250;
+
+        let i = 0;
+
+        const intervalId = setInterval(() => {
+          if (isHover) {
+            red -= 10;
+            blue += 10;
+          } else {
+            red += 10;
+            blue -= 10;
+          }
+
+          cb.style.backgroundColor = `rgb(${red}, 0, ${blue})`;
+
+          if (i === 50) {
+            clearInterval(intervalId); // Stop the interval after 50 iterations
+          }
+
+          i++;
+        }, 10);
+      }
+
+      let dimred;
+      function approach(x, y) {
+        const MIN_DISTANCE = 255 + 50;
+        const { sqrt, pow } = Math;
+
+        const distance = sqrt(pow(x - cb_x, 2) + pow(y - cb_y, 2));
+
+        if (distance <= MIN_DISTANCE) {
+          cb.style.backgroundColor = `rgb(${distance}, 0, 0)`;
+        }
+      }
+
+      function onhover() {
+        hover(true);
+      }
+
+      function onhoverlost() {
+        hover(false);
+      }
+
+      function switcher() {
+        btn = document.getElementById("switcher");
+        cb = document.getElementById("colorbox");
+        body = document.body;
+
+        if (current_mode == "hover") {
+          current_mode = "approach";
+          btn.innerHTML = "Hover";
+
+          getColorboxCoords();
+
+          // add listeners
+          window.addEventListener("resize", getColorboxCoords);
+          body.addEventListener("mousemove", (e) => approach(e.x, e.y));
+
+          // remove other ones
+          cb.removeEventListener("mouseenter", onhover);
+          cb.removeEventListener("mouseleave", onhoverlost);
+        } else {
+          current_mode = "hover";
+          btn.innerHTML = "Approach";
+
+          // add listeners
+          cb.addEventListener("mouseenter", onhover);
+          cb.addEventListener("mouseleave", onhoverlost);
+
+          // remove other ones
+          body.removeEventListener("mousemove", (e) => approach(e.x, e.y));
+        }
+      }
+
+      function run() {
+        body = document.body;
+
+        body.style.display = "flex";
+        body.style.alignContent = "center";
+        body.style.justifyContent = "center";
+        body.style.height = "100vh";
+
+        body.innerHTML += `<button id="switcher" onClick="switcher()"></button>`;
+        btn = document.getElementById("switcher");
+
+        btn.style.position = "absolute";
+        btn.style.left = "8px";
+
+        body.innerHTML += `<div id="colorbox" style="background-color: red; width: 100px; height: 100px;"></div>`;
+        cb = document.getElementById("colorbox");
+
+        cb.style.alignSelf = "center";
+
+        switcher();
+      }
+    </script>
+  </head>
+
+  <body onLoad="run()"></body>
+</html>

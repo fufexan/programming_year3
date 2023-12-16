@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>Aliniere pe verticala</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<link rel="stylesheet" href="http://helios.utcluj.ro/cosmin/WEB/CSS/style.css">
+
+<style>
+
+.center01 {
+	height: 150px;
+	background-color: #333333;
+	color: lime;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+.center02 {
+	background-color: #003355;
+	color: red;
+	display: block;
+	padding: 50px;
+}
+
+.center03{
+	height: 200px;
+	background-color: #FF0000;
+	color: white;
+	display: table-cell;
+	vertical-align: middle;
+}
+
+.regular01 {
+	height: 150px;
+	background-color: #555555;
+	color: yellow;
+}
+
+.bottom01 {
+	position: relative;
+	height: 250px;
+	background-color: #FF7700;
+	color: black;
+	padding-bottom: 3px;
+}
+
+.bottom01_content{
+	position: absolute;
+	bottom: 0px;
+	left: 0px;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div class="center01">
+	Text centrat pe verticala (clasa CSS center01)
+</div>
+
+<div class="center02">
+	Alt text centrat pe verticala (clasa CSS center02)
+</div>
+
+<div class="center03">
+	Alta varianta de centrare pe verticala (clasa CSS center03)
+</div>
+
+<div class="regular01">
+	Text normal, pozitionat sus
+</div>
+
+<div class="bottom01">
+	<div class="bottom01_content">
+	Text pozitionat in partea de jos, si poza aferenta <img src="jack.jpg">
+	</div>
+</div>
+
+</body>
+</html>

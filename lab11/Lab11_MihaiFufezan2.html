@@ -1,0 +1,63 @@
+<!doctype html>
+
+<!--
+2. Dezvoltați o pagină web cu facilități JavaScript care desenează, una langa alta,
+o serie (10) de componente div colorate cu culori prestabilite. Într-o zonă de pe ecran
+se afișează codul culorii deasupra căreia se află mouse-ul. Textul este afișat cu culoarea componentei.
+-->
+
+<html>
+  <head>
+    <script>
+      // premade colors
+      const colors = [
+        "#ff0000",
+        "#ff7f00",
+        "#ffff00",
+        "#7fff00",
+        "#00ff00",
+        "#00ff7f",
+        "#00ffff ",
+        "#007fff",
+        "#0000ff",
+        "#7f00ff",
+      ];
+
+      const style = `
+        width: 10vw;
+        height: 10vw;
+      `;
+
+      function updateLabel(color) {
+        document.getElementById("color-display").innerHTML = `${color}`;
+      }
+
+      function run() {
+        const body = document.body;
+
+        // add label
+        body.innerHTML += `<label id="color-display">No color hovered</label>`;
+        // add container
+        body.innerHTML += `<div id="color-container"></div>`;
+        const container = document.getElementById("color-container");
+        container.style.display = "flex";
+
+        for (let i = 0; i < colors.length; i++) {
+          let name = `color${i}`;
+
+          container.innerHTML += `<div id="${name}" style="${style}; background-color: ${colors[i]}"></div>`;
+        }
+
+        // another for because listeners don't get added if in the same for
+        for (let i = 0; i < colors.length; i++) {
+          let id = document.getElementById(`color${i}`);
+          id.addEventListener("mouseenter", () =>
+            updateLabel(id.style.backgroundColor),
+          );
+        }
+      }
+    </script>
+  </head>
+
+  <body onLoad="run()"></body>
+</html>

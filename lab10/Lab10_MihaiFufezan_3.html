@@ -1,0 +1,44 @@
+<!doctype html>
+<html>
+  <head>
+    <script>
+      let div;
+
+      let colorMatrix = [
+        [1, 0, 0],
+        [0, 1, 1],
+        [1, 0, 1],
+      ];
+
+      const show = () => {
+        div = document.getElementById("displayer");
+
+        // make the element grid
+        div.style.display = "grid";
+        div.style.width = "33rem";
+        div.style.gridTemplateColumns = "repeat(3, 1fr)";
+
+        for (let i = 0; i < 9; i++) {
+          div.innerHTML += `
+            <div style="background-color: ${color(
+              i,
+              colorMatrix,
+            )}; margin: .5rem; width: 10rem; height: 10rem"></div>
+          `;
+        }
+      };
+
+      const color = (num, matrix) => {
+        let line = num / 3;
+        let col = num % 3;
+        let n = matrix.at(line).at(col);
+
+        return n == 0 ? "blue" : "red";
+      };
+    </script>
+  </head>
+
+  <body onLoad="show()">
+    <div id="displayer"></div>
+  </body>
+</html>

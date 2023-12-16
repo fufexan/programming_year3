@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>Variabile JS</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<link rel="stylesheet" href="http://helios.utcluj.ro/cosmin/WEB/CSS/style.css">
+
+<script>
+
+var x; //variabila globala, fara valoare
+y = 7; //variabila numerica (initializata chiar si fara var)
+var z = 7.89; //variabila float
+var t = true; //variabila booleana
+u = 'u'; //variabila de tip text
+v = "v"; //variabila de tip text
+w = "abc"; //variabila de tip text
+
+textAfisat = ""; //variabila de tip text, folosita la output
+
+function f1(){
+	//referinta la elementul <div> cu id-ul displayer
+	displayer = document.getElementById("displayer");
+
+	//toate valorile se concateneaza ca text 
+	textAfisat += "variabilele definite in JS au valorile: " +
+	"x = " + x + 
+	", y = " + y +
+	", z = " + z +
+	", t = " + t +
+	", u = " + u +
+	", v = " + v +
+	", w = " + w +
+	"";
+
+	displayer.innerHTML = textAfisat;
+}
+
+</script>
+
+</head>
+
+<body onLoad="f1()">
+
+<div id="displayer">
+
+</div>
+
+
+</body>
+</html>

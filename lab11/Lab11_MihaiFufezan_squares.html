@@ -1,0 +1,42 @@
+<!doctype html>
+
+<html>
+  <head>
+    <script>
+      let body;
+      let count = 0;
+
+      const square = (i, x, y) => {
+        let style = ` 
+          width: 1rem;
+          height: 1rem;
+          background-color: red;
+          position: absolute;
+          left: ${x}px;
+          top: ${y}px;
+        `;
+        return `<div id="square${i}" style="${style}"></div>`;
+      };
+
+      function createSquare(e) {
+        const counter = document.getElementById("counter");
+        counter.innerText = ++count;
+        body.innerHTML += square(count, e.clientX, e.clientY);
+      }
+
+      function run() {
+        body = document.body;
+        body.style.height = "100vh";
+
+        const counter = document.createElement("div");
+        counter.id = "counter";
+        counter.innerText = 0;
+        body.appendChild(counter);
+
+        body.addEventListener("click", createSquare);
+      }
+    </script>
+  </head>
+
+  <body onLoad="run()"></body>
+</html>

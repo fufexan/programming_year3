@@ -1,0 +1,44 @@
+<!doctype html>
+
+<!--
+6. Dezvoltați o pagină web cu facilități JavaScript care afișează ora curentă (hh:mm:ss), actualizată o dată pe
+secundă (obiect de tip Date, apel repetat de cod prin setInterval() sau setTimeout()).
+-->
+
+<html>
+  <head>
+    <script>
+      function run() {
+        const body = document.body;
+        body.style.display = "flex";
+        body.style.height = "100vh";
+
+        body.style.alignItems = "center";
+        body.style.justifyContent = "center";
+
+        body.innerHTML += `<p id="clock"></p>`;
+
+        const clock = document.getElementById("clock");
+        clock.style.fontFamily = "sans";
+        clock.style.fontSize = "15rem";
+
+        setInterval(() => {
+          const date = new Date(Date.now());
+          const makePart = (n) => `${n}`.padStart(2, "0");
+
+          const dateText = [
+            date.getHours(),
+            date.getMinutes(),
+            date.getSeconds(),
+          ]
+            .map(makePart)
+            .join(":");
+
+          document.getElementById("clock").innerHTML = dateText;
+        }, 1000);
+      }
+    </script>
+  </head>
+
+  <body onLoad="run()"></body>
+</html>

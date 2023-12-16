@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>Calcule CSS</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<link rel="stylesheet" href="http://helios.utcluj.ro/cosmin/WEB/CSS/style.css">
+
+<style>
+
+:root{
+	--red: calc(255 - 30);
+}
+
+.div1{
+	width: calc(100vw - 150px); /* neaparat spatii inainte si dupa - */
+	margin: auto;
+	border: 1px solid orange;
+}
+
+.div2{
+	font-size: calc(10vw);
+	border: 1px solid coral;
+}
+
+.div3{
+	color: rgb(var(--red), 0, 0);
+}
+
+.div4{
+	font-size: calc(2vw);
+	border: calc(2em) dashed yellow;
+}
+
+
+</style>
+
+</head>
+
+<body>
+
+<div class="div1">
+	container cu latimea vw - 150px
+</div>
+
+<div class="div2">
+	text cu marimea caracterelor 10% din vw (resize => efect)
+</div>
+
+<div class="div3">
+	text cu culoarea definita prin variabila
+</div>
+
+<div class="div4">
+	text cu border dependent de marimea caracterelor (resize => efect)
+</div>
+
+</body>
+</html>

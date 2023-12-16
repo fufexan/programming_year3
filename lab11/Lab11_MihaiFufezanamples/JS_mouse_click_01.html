@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+<title>Mouse click</title>
+
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<link rel="stylesheet" href="http://helios.utcluj.ro/cosmin/WEB/CSS/style.css">
+
+<script>
+
+
+	document.addEventListener("click", mouseProcess);
+
+
+	function mouseProcess(e) {
+
+		alert("CLICK!");
+
+		if (e.target) {
+        		targ=e.target;
+    		} 
+		
+		if (e.srcElement) {
+        		targ=e.srcElement;
+    		}	
+
+		alert(targ);
+
+		return false;
+	}
+
+
+	function f1(){
+		alert("buton apasat");
+	}
+
+</script>
+
+</head>
+
+<body>
+detectarea click-urilor de mouse si a componentelor in care au fost sesizate (buton, div, pagina)
+<div id="float_div" style="position: relative; width: 100px; height: 100px; border: 1px solid red;">
+</div>
+
+<input type="button" value="Buton" OnClick="f1()">
+
+
+</body>
+</html>

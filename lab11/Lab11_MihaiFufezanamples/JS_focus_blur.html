@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+<title>Blur Focus JS</title>
+
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<link rel="stylesheet" href="http://helios.utcluj.ro/cosmin/WEB/CSS/style.css">
+
+<script>
+
+var text1;
+
+function init(){
+	text1 = document.getElementById("text1");
+	text1.onblur = setFocus;
+	setFocus();
+}
+
+function setFocus(){			
+	text1.focus();
+}
+
+</script>
+
+</head>
+
+<body onLoad="init()">
+
+Tratarea evenimentelor OnFocus si OnBlur. 
+<br>La incarcarea documentului, prima componenta de tip text primeste focus-ul automat si nu il poate pierde.
+<hr>
+<br>
+
+	<input id="text1" type="text" size="10"><BR>
+	<input id="text2" type="text" size="10" onFocus="setFocus()"><BR>
+	<input type="button" OnClick="alert('Nu ai completat al doilea camp si nici nu poti :D');" value="Click">
+
+
+</body>
+</html>

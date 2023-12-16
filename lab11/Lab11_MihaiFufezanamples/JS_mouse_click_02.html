@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+<title>Mouse click</title>
+
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<link rel="stylesheet" href="http://helios.utcluj.ro/cosmin/WEB/CSS/style.css">
+
+<script>
+
+
+function whichElement(e) {
+	var targ;
+	if (!e) {
+		var e = window.event;
+	}
+	if (e.target) {
+		targ=e.target;
+	} 
+	else 
+		if (e.srcElement) {
+			targ=e.srcElement;
+	}
+	var tname;
+	tname = targ.tagName;
+	alert("Click detectat pe un element de tip " + tname);
+}
+
+</script>
+
+</head>
+
+<body onmousedown="whichElement(event)">
+
+<p>Click oriunde in document (chiar si pe componente). Se afiseaza tag-ul elementului pe care a fost detectat evenimentul.</p>
+<h3>Un heading</h3>
+<img border="0" src="http://helios.utcluj.ro/cosmin/web/IMG/jack.jpg" alt="Jack">
+<p>Niste text intr-un paragraf...</p>
+
+
+</body>
+</html>

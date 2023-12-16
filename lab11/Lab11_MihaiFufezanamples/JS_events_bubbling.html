@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+<title>Propagarea evenimentelor JS</title>
+
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<link rel="stylesheet" href="http://helios.utcluj.ro/cosmin/WEB/CSS/style.css">
+
+<script>
+
+
+function init() {
+	window.onclick = winEvent
+	document.onclick = docEvent
+	document.body.onclick = docBodEvent
+}
+function winEvent() {	
+	alert("Evenimentul este acum la nivelul obiectului 'window'.")
+}
+function docEvent() {
+	alert("Evenimentul este acum la nivelul obiectului 'document'.")
+}
+function docBodEvent() {
+	alert("Evenimentul este acum la nivelul elementului 'BODY'.")
+}
+
+</script>
+
+</head>
+
+<body onLoad="init()">
+
+<h1>Propagarea evenimentelor (events bubbling)</H1>
+<hr>
+click pe componente sau in document...
+<form onClick="alert('Eveniment in elementul FORM.')">
+<input type="button" value="Button 'buton1'" name="buton1" onClick="alert('Eveniment declansat de butonul: ' + this.name)">
+</form>
+
+</body>
+</html>

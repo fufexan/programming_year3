@@ -1,0 +1,164 @@
+* {
+  font-family: sans-serif;
+  --main: #00755a;
+}
+
+.material-symbols-outlined {
+  font-variation-settings:
+    "FILL" 0,
+    "wght" 400,
+    "GRAD" 0,
+    "opsz" 20;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  margin: 0;
+  min-height: 100vh;
+}
+
+a {
+  border: 1px solid var(--main);
+  border-radius: 8px;
+  color: var(--main);
+  padding: 0.3rem;
+  text-decoration: none;
+}
+
+a:hover {
+  background-color: var(--main);
+  color: white;
+  transition: 200ms;
+}
+
+header {
+  align-items: center;
+  box-shadow: 2px 0 5px #aaa;
+  display: flex;
+}
+
+header h2 {
+  margin: 1rem;
+}
+
+#logo {
+  width: 4rem;
+  height: 4rem;
+}
+
+.menu {
+  align-self: right;
+  background: none;
+  border: none;
+  display: none;
+  margin-left: auto;
+  margin-right: 1rem;
+}
+
+.middle {
+  display: flex;
+  margin: 1rem;
+}
+
+.main {
+  display: flex;
+  flex-direction: column;
+  margin: 0.7rem;
+}
+
+.main a {
+  margin: 0.5rem;
+  text-align: right;
+  width: 10vw;
+}
+
+.inner {
+  display: flex;
+  flex-direction: column;
+}
+
+.content {
+  display: flex;
+}
+
+.content div {
+  border-radius: 8px;
+  box-shadow: 0 2px 4px #aaa;
+  margin: 0.2rem;
+  padding: 0.5rem;
+}
+
+#secondary {
+  align-items: center;
+  display: flex;
+  justify-content: space-between;
+  margin: 1rem 0;
+}
+
+#secondary div {
+  margin: 0.5rem;
+  min-width: 10vw;
+  text-align: center;
+}
+
+.contact-info {
+  display: flex;
+  justify-content: space-around;
+  margin: 1rem;
+}
+
+footer {
+  background-color: #aaa;
+  margin-top: auto;
+}
+
+footer .contact-info div {
+  align-items: center;
+  display: flex;
+}
+
+footer .contact-info div p {
+  margin: 0.2rem;
+}
+
+footer .material-symbols-outlined {
+  margin: 0 0.5rem;
+}
+
+footer > p {
+  text-align: center;
+}
+
+@media only screen and (max-width: 768px) {
+  .contact-info,
+  .content,
+  .middle,
+  #secondary {
+    flex-direction: column;
+  }
+
+  .menu {
+    display: inherit;
+  }
+
+  #secondary {
+    display: none;
+    margin: 0 1rem;
+    transition: 200ms;
+  }
+
+  #secondary a {
+    display: inline-block;
+    width: 40vw;
+  }
+
+  .main {
+    align-items: center;
+  }
+
+  .main a {
+    text-align: center;
+    width: 20vw;
+  }
+}

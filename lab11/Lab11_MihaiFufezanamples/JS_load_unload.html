@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+<title>onLoad, onUnload JS</title>
+
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<link rel="stylesheet" href="http://helios.utcluj.ro/cosmin/WEB/CSS/style.css">
+
+<script>
+
+function f1(component){
+
+	alert("document incarcat");
+}
+
+function f2(event){
+	alert("pagina urmeaza sa se inchida"); //depinde de browser
+	window.open("JS_load_unload.html"); //merge
+}
+
+</script>
+
+</head>
+
+<body onLoad="f1()" onUnload="f2()">
+
+Tratarea evenimentelor onLoad si onUnload (incarcarea si inchiderea documentului).
+<br><br>
+Pt. testarea onUnload, documentul trebuie reincarcat (F5 in browser => se deschide inca o fereastra din functia care trateaza evenimentul).
+
+
+</body>
+</html>

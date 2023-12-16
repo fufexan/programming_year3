@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>Functii JS</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<link rel="stylesheet" href="http://helios.utcluj.ro/cosmin/WEB/CSS/style.css">
+
+<script>
+
+
+textAfisat = ""; //variabila de tip text, folosita la output
+
+function f1(){	
+
+	f2(); //apel de functie
+
+	textAfisat = f2; //codul functiei
+	textAfisat += "<br><br>" + f3; //codul functiei
+
+	textAfisat += "<hr>";
+
+	textAfisat += "<br><br>apelul f3() " + f3();
+	textAfisat += "<br><br>apelul f3(1) " + f3(1);	
+	textAfisat += "<br><br>apelul f3(1, 5) " + f3(1, 5);
+	textAfisat += "<br><br>apelul f3(1, 5, 7, 8) " + f3(1, 5, 7, 8);
+
+	displayer.innerHTML = textAfisat;
+}
+
+function f2(){
+	alert("function f2 called!");
+}
+
+function f3(a, b){
+	return (a + b);
+}
+
+</script>
+
+</head>
+
+<body onLoad="f1()">
+
+<div id="displayer">
+
+</div>
+
+
+</body>
+</html>

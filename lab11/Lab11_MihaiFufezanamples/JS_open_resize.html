@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+<title>Open, resize JS</title>
+
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<link rel="stylesheet" href="http://helios.utcluj.ro/cosmin/WEB/CSS/style.css">
+
+<script>
+
+var new_window;
+
+function f1() {
+	new_window = window.open("", "", "width=100, height=100");
+	new_window.moveTo(200, 200);
+}
+
+function f2() {
+	new_window.resizeTo(250, 250);
+	new_window.focus();
+}
+
+</script>
+
+</head>
+
+<body>
+
+Deschiderea unei noi ferestre si redimensionarea ei 
+
+<hr>
+<br>
+
+<input type="button" OnClick="f1()" value="Fereatra noua">
+<input type="button" OnClick="f2()" value="Redimensionarea noii ferestre">
+
+</body>
+</html>

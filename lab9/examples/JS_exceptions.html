@@ -1,0 +1,72 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <title>Exceptii JS</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <link
+      rel="stylesheet"
+      href="http://helios.utcluj.ro/cosmin/WEB/CSS/style.css"
+    />
+
+    <script>
+      var crtDate = new Date();
+
+      textAfisat = ""; //variabila de tip text, folosita la output
+
+      function f1() {
+        textAfisat +=
+          "<br><br>data curenta: " +
+          crtDate.getDate() +
+          " (ziua din saptamana: " +
+          crtDate.getDay() +
+          ")" +
+          " / " +
+          (crtDate.getMonth() + 1) +
+          " / " +
+          crtDate.getFullYear() +
+          ", " +
+          crtDate.getHours() +
+          ":" +
+          crtDate.getMinutes() +
+          ":" +
+          crtDate.getSeconds() +
+          " " +
+          "";
+
+        //ms scurse de la 01/01/1970, ora 00:00
+        for (i = 1; i <= 31; i++) {
+          try {
+            otherDate = new Date(crtDate.getFullYear(), crtDate.getMonth(), i);
+            if (otherDate.getTime() > crtDate.getTime())
+              throw "data calculata depaseste data curenta!";
+            textAfisat +=
+              "<br>" +
+              otherDate.getDate() +
+              " / " +
+              (otherDate.getMonth() + 1) +
+              " / " +
+              otherDate.getFullYear() +
+              " => OK";
+          } catch (error) {
+            textAfisat += "<br>" + error;
+          }
+        }
+
+        textAfisat += "<br><br>tesarea exceptiilor de sintaxa: ";
+        try {
+          niciuncod("sintaxa gresita");
+        } catch (err) {
+          textAfisat += "<br>" + err.name + ": " + err.message;
+        }
+
+        displayer.innerHTML = textAfisat;
+      }
+    </script>
+  </head>
+
+  <body onLoad="f1()">
+    <div id="displayer"></div>
+  </body>
+</html>

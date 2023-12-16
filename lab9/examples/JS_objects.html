@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>Obiecte JS</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<link rel="stylesheet" href="http://helios.utcluj.ro/cosmin/WEB/CSS/style.css">
+
+<script>
+
+var student = { 
+	nume: "Maria", 
+	"prenume": "lui Ion", 
+	varsta: 22, 
+	specializarea: "TST", 
+	saluta: function() { 
+		return "Salut sunt " + this.nume; 
+	}
+}; 
+
+var altStudent = Object.create(student); //clonarea primului obiect
+
+textAfisat = ""; //variabila de tip text, folosita la output
+
+function f1(){	
+
+	textAfisat += "<br><br>atributele studentului: " + 
+	student.nume + ", " +
+	student.prenume + ", " +
+	student.varsta + ", " +
+	student.specializarea; 
+	
+	//adaugarea unui atribut nou, specific obiectului student
+	student.media = "99.99"; 
+
+	textAfisat += "<br><br>valoarea noului atribut 'media' al obiectului student: " + student.media; 
+	textAfisat += "<br><br>valoarea atributului 'media' al obiectului altStudent: " + altStudent.media; //propagare
+
+	//adaugarea unui atribut nou, specific obiectului altStudent
+	altStudent.cunostinte = "JS";
+	textAfisat += "<br><br>valoarea noului atribut 'cunostinte' al obiectului altStudent: " + altStudent.cunostinte; 
+	textAfisat += "<br><br>valoarea atributului 'cunostinte' al obiectului student: " + student.cunostinte; //nu se propaga in sus in ierarhia de clonare
+
+	textAfisat += "<br><br>denumirile atributelor obiectului student: " + Object.keys(student); 
+
+	altStudent.nume = "Ana";
+	textAfisat += "<br><br>atributele 'nume' ale celor 2 obiecte: " + student["nume"] + ", " + altStudent.nume; // ! sintaxa de apel a atributelor
+
+	//apelul metodelor obiectelor	
+	textAfisat += "<br><br>metodele saluta() ale celor 2 obiecte: " + student.saluta() + ", " + altStudent.saluta();
+
+	//adaugarea unei noi metode pt. student
+	student.aduna = function(a, b) { return (a + b); }
+
+	//apelul noii metode
+	textAfisat += "<br><br>noua metoda a obiectului student: " + student.aduna(3, 4);	 
+	textAfisat += "<br><br>noua metoda apelata pe obiectul altStudent: " + altStudent.aduna(5, 6);	 //propagare
+
+	 
+
+	displayer.innerHTML = textAfisat;
+}
+
+
+
+</script>
+
+</head>
+
+<body onLoad="f1()">
+
+<div id="displayer">
+
+</div>
+
+
+</body>
+</html>

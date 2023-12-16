@@ -1,0 +1,76 @@
+<!doctype html>
+
+<!--
+2. Dezvoltați o pagină web cu facilități JavaScript care desenează, una langa alta,
+- o serie de componente (10) div colorate cu culori prestabilite
+- o serie de componente (10) div colorate cu culori generate aleator
+-->
+
+<html>
+  <head>
+    <script>
+      // premade colors
+      const colors = [
+        "#ff0000",
+        "#ff7f00",
+        "#ffff00",
+        "#7fff00",
+        "#00ff00",
+        "#00ff7f",
+        "#00ffff ",
+        "#007fff",
+        "#0000ff",
+        "#7f00ff",
+      ];
+
+      const random = () => {
+        // generate random colors
+
+        const MAX = 256;
+        let r = Math.floor(Math.random() * MAX);
+        let g = Math.floor(Math.random() * MAX);
+        let b = Math.floor(Math.random() * MAX);
+
+        return `${r},${g},${b}`;
+      };
+
+      const premade = () => {
+        // generate divs with premade colors
+
+        let text = "";
+
+        for (let i = 0; i < 10; i++) {
+          text += `<div id="premade${i}" style="background-color: ${colors[i]}; width: 50vw; height: 10vh;"></div>`;
+        }
+
+        return text;
+      };
+
+      const randomDivs = () => {
+        // generate divs with random colors
+
+        let text = "";
+
+        for (let i = 0; i < 10; i++) {
+          text += `<div id="premade${i}" style="background-color: rgb(${random()}); width: 50vw; height: 10vh;"></div>`;
+        }
+
+        return text;
+      };
+
+      const run = () => {
+        document.body.style.margin = 0;
+        const div = document.getElementById("displayer");
+
+        div.style.display = "flex";
+
+        div.innerHTML += `<div>${premade()}</div>`;
+        div.innerHTML += `<div>${randomDivs()}</div>`;
+      };
+    </script>
+  </head>
+
+  <body onLoad="run()">
+    <div id="displayer"></div>
+  </body>
+</html>

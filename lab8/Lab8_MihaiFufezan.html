@@ -1,0 +1,106 @@
+<!doctype html>
+<html>
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" href="Lab8_MihaiFufezan.css" />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200"
+    />
+    <script>
+      toggleSecondary = () => {
+        let secondary = document.getElementById("secondary");
+
+        if (secondary.style.display == "") {
+          secondary.style.display = "flex";
+        } else {
+          secondary.style.display = "";
+        }
+      };
+    </script>
+  </head>
+
+  <body>
+    <header>
+      <img src="https://yew.rs/img/logo.svg" alt="logo" id="logo" />
+      <h2>Yew.rs</h2>
+      <button class="menu" onClick="toggleSecondary()">
+        <span class="material-symbols-outlined">menu</span>
+      </button>
+    </header>
+
+    <div class="middle">
+      <div class="inner">
+        <div id="secondary">
+          <div>
+            <a
+              href="https://yew.rs/docs/getting-started/introduction"
+              target="_blank"
+              >Getting started</a
+            >
+          </div>
+          <div>
+            <a href="https://play.yew.rs/" target="_blank">Playground</a>
+          </div>
+          <div>
+            <a href="https://github.com/yewstack/yew" target="_blank">GitHub</a>
+          </div>
+          <div>
+            <a href="https://yew.rs/community/awesome" target="_blank"
+              >Community</a
+            >
+          </div>
+          <div><a href="https://yew.rs/blog" target="_blank">Blog</a></div>
+        </div>
+        <div class="content">
+          <div>
+            <h3>Component based</h3>
+            <p>
+              Features a component-based framework which makes it easy to create
+              interactive UIs. Developers who have experience with frameworks
+              like React and Elm should feel quite at home when using Yew.
+            </p>
+          </div>
+          <div>
+            <h3>HTML Macro</h3>
+            <p>
+              Features a macro for declaring interactive HTML with Rust
+              expressions. Developers who have experience using JSX in React
+              should feel quite at home when using Yew.
+            </p>
+          </div>
+          <div>
+            <h3>Server Side Rendering</h3>
+            <p>
+              Features server side rendering for all the SEO and enhancements of
+              server-rendered app while keeping the feel of an SPA
+            </p>
+          </div>
+        </div>
+      </div>
+      <div class="main">
+        <a href="#">Docs</a>
+        <a href="#">Tutorial</a>
+        <a href="#">API</a>
+      </div>
+    </div>
+
+    <footer>
+      <div class="contact-info">
+        <div>
+          <span class="material-symbols-outlined">call</span>
+          <p>Phone: +40-723-456-789</p>
+        </div>
+        <div>
+          <span class="material-symbols-outlined">email</span>
+          <p>Email: contact@yew.rs</p>
+        </div>
+        <div>
+          <span class="material-symbols-outlined">alternate_email</span>
+          <p>GitHub: yewstack</p>
+        </div>
+      </div>
+      <p>&copy; Fufezan Mihai</p>
+    </footer>
+  </body>
+</html>

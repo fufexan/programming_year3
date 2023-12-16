@@ -1,0 +1,90 @@
+<!doctype html>
+
+<!--
+4. Dezvoltați o pagină web cu facilități JavaScript care definește o grilă dreptunghiulară (componente div
+alăturate, dispuse matricial; dimensiunea grilei este prestabilită).
+La trecerea cu mouse-ul peste componente, acestea își schimbă culoarea. Monitorizați și afișați timpul scurs
+până la colorarea tuturor celulelor.
+-->
+
+<html>
+  <head>
+    <script>
+      const m = 15;
+      const n = 10;
+
+      const visited = [...Array(m * n)].map((_, i) => false);
+
+      let start, end;
+      let started = false;
+      let completed = false;
+
+      let x = 0;
+      let y = 0;
+
+      const elems = 100 / m;
+      const side = 100 / Math.max(m, n);
+
+      const cellStyle = `
+        width: ${elems}%;
+        flex: 0 ${elems}%;
+        padding-bottom: ${elems}%;
+        background-color: bisque;
+        box-shadow: inset 0 0 0 .5px black;
+      `;
+
+      function color(i, j) {
+        if (!started) {
+          start = Date.now();
+          started = true;
+        }
+
+        const elem = document.getElementById(`l${i}c${j}`);
+        elem.style.backgroundColor = "pink";
+
+        visited[i * m + j] = true;
+        console.debug(
+          `i: ${i}, j: ${j}, pos: ${i * m + j} of ${visited.length - 1}`,
+        );
+        if (!visited.some((e) => e == false) && !completed) {
+          completed = true;
+          end = Date.now();
+          const text = `Filling up the array took ${(end - start) / 1000}s`;
+          console.log(text);
+          document.getElementById("text").innerHTML = text;
+        }
+      }
+
+      function run() {
+        const body = document.body;
+
+        body.innerHTML += `<div id="container"></div>`;
+        body.innerHTML += `<p id="text"></p>`;
+
+        const container = document.getElementById(`container`);
+
+        container.style.display = "flex";
+        container.style.flexWrap = "wrap";
+        container.style.width = `${side * m}vh`;
+
+        // add elements
+        for (let i = 0; i < n; i++) {
+          for (let j = 0; j < m; j++) {
+            container.innerHTML += `<div id="l${i}c${j}" style="${cellStyle}"></div>`;
+          }
+        }
+
+        // second `for` for event listeners
+        for (let i = 0; i < n; i++) {
+          for (let j = 0; j < m; j++) {
+            document
+              .getElementById(`l${i}c${j}`)
+              .addEventListener("mouseenter", () => color(i, j));
+          }
+        }
+      }
+    </script>
+  </head>
+
+  <body onLoad="run()"></body>
+</html>

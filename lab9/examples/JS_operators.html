@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>Operatori JS</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<link rel="stylesheet" href="http://helios.utcluj.ro/cosmin/WEB/CSS/style.css">
+
+<script>
+
+x = 7;
+y = "7";
+z = 8;
+
+t = true;
+
+s = "ana are mere";
+
+
+textAfisat = ""; //variabila de tip text, folosita la output
+
+function f1(){
+	//referinta la elementul <div> cu id-ul displayer
+	displayer = document.getElementById("displayer");
+
+	//toate valorile se concateneaza ca text
+	
+	textAfisat += "<br><br>x = " + x + " (" + typeof(x) +")"; 
+	textAfisat += "<br><br>y = " + y + " (" + typeof(y) +")";
+	textAfisat += "<br><br>z = " + z + " (" + typeof(z) +")";
+	textAfisat += "<br><br>t = " + t + " (" + typeof(t) +")";
+	textAfisat += "<br><br>s = " + s + " (" + typeof(s) +")";
+
+	textAfisat += "<hr>";
+ 
+	textAfisat += "<br><br>operatorul == aplicat intre valorile x si y returneaza " + (x==y);
+	textAfisat += "<br><br>operatorul === aplicat intre valorile x si y returneaza " + (x===y);
+	textAfisat += "<br><br>operatorul != aplicat intre valorile x si y returneaza " + (x!=y);
+	textAfisat += "<br><br>operatorul !== aplicat intre valorile x si y returneaza " + (x!==y);
+	textAfisat += "<br><br>operatorul != aplicat intre valorile x si z returneaza " + (x!=z);
+
+	textAfisat += "<br><br> x / z  = " + (x/z);
+	textAfisat += "<br><br> y / z  = " + (y/z);
+	textAfisat += "<br><br> s / z  = " + (s/z);
+	textAfisat += "<br><br> x ridicat la puterea 2  = " + (x**2);
+	textAfisat += "<br><br> x + y  = " + (x+y);
+	textAfisat += "<br><br> x + z + y  = " + (x+z+y);
+	textAfisat += "<br><br> x + z + s  = " + (x+z+s);
+	textAfisat += "<br><br> z + s + y  = " + (z+s+y);
+	textAfisat += "<br><br> x + t  = " + (x+t);	
+	textAfisat += "<br><br> s + t  = " + (s+t);	
+	textAfisat += "<br><br> t + t  = " + (t+t);	
+
+	displayer.innerHTML = textAfisat;
+}
+
+</script>
+
+</head>
+
+<body onLoad="f1()">
+
+<div id="displayer">
+
+</div>
+
+
+</body>
+</html>

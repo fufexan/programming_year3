@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>Media queries</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<link rel="stylesheet" href="http://helios.utcluj.ro/cosmin/WEB/CSS/style.css">
+
+<style>
+
+:root{
+	--red: calc(255 - 30);
+}
+
+.div1{
+	width: 50%; 
+	margin: auto;
+	border: 1px solid orange;
+}
+
+.div2{
+	background-color: rgb(255, 0, 0);
+	color: white;
+}
+
+.div3{
+	float: left;
+	width: 30%;
+	border: 1px solid yellow;
+}
+
+@media screen and (max-width: 992px) {
+	.div1{
+		width: 90%;
+		border: 1px dashed orange;
+	}
+
+	.div3{
+		clear: both;
+		width: 90%;
+	}
+}
+
+@media screen and (max-width: 1200px) {
+	.div2{
+		background-color: rgb(200, 0, 0);
+	}
+}
+
+@media screen and (max-width: 1000px) {
+	.div2{
+		background-color: rgb(150, 0, 0);
+	}
+}
+
+@media screen and (max-width: 800px) {
+	.div2{
+		background-color: rgb(100, 0, 0);
+	}
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div class="div1">
+	schimbare de latime (50% -> 90%); break point: max-width = 992px<br>(resize => efect)
+</div>
+
+<div class="div2">
+	background schimbat la pragurile 1200px, 1000px, 800px (resize => efect)
+</div>
+
+<div class="div3">
+	text 1 afisat in celule alaturate, pana la break point 992px
+</div>
+
+<div class="div3">
+	text 2 afisat in celule alaturate, pana la break point 992px
+</div>
+
+<div class="div3">
+	text 3 afisat in celule alaturate, pana la break point 992px
+</div>
+
+<div style="clear: both;">
+	alta componenta
+</div>
+
+</body>
+</html>

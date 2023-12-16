@@ -1,0 +1,39 @@
+<!doctype html>
+
+<!--
+7. Dezvoltați o pagină web cu facilități JavaScript care detectează și afișează caracteristicile:
+- host
+- hostname
+- href
+- pathname
+- port
+- protocol
+specifice paginii curente. Să se afișeze numele browserului care a servit la încărcarea paginii.
+-->
+
+<html>
+  <head>
+    <script>
+      function run() {
+        const body = document.body;
+        const { host, hostname, href, pathname, port, protocol } =
+          window.location;
+
+        const browser = window.navigator.userAgent;
+
+        body.style.fontFamily = "sans";
+        body.innerHTML += `
+          <p>Host: <span style="font-family: monospace">${host}</span></p>
+          <p>Hostname: <span style="font-family: monospace">${hostname}</span></p>
+          <p>Href: <span style="font-family: monospace">${href}</span></p>
+          <p>Pathname: <span style="font-family: monospace">${pathname}</span></p>
+          <p>Port: <span style="font-family: monospace">${port}</span></p>
+          <p>Protocol: <span style="font-family: monospace">${protocol}</span></p>
+          <p>Browser: <span style="font-family: monospace">${browser}</span></p>
+        `;
+      }
+    </script>
+  </head>
+
+  <body onLoad="run()"></body>
+</html>

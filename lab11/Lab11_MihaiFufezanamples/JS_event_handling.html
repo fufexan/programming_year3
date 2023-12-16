@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+<title>Tratarea evenimentelor</title>
+
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<link rel="stylesheet" href="http://helios.utcluj.ro/cosmin/WEB/CSS/style.css">
+
+<style>
+div{
+	position: relative;
+	width: 100px;
+	height: 50px;
+	border: 1px solid orange;
+	margin: 10px;
+	padding: 10px;
+}
+</style>
+
+<script>
+function init(){
+	var div2 = document.getElementById("div2");
+	div2.addEventListener("click", f2);
+	
+	var div3 = document.getElementById("div3");
+	div3.addEventListener("click", function(){
+		alert("Div 3 apasat");
+	});
+
+	var div4 = document.getElementById("div4");
+	div4.addEventListener("click", () => {
+		alert("Div 4 apasat");
+	});
+
+	var div5 = document.getElementById("div5");
+	div5.addEventListener("click", (event) => {
+		text = "Div 5 apasat, ";
+		switch(event.button){
+			case 0: text += "click stanga"; break;
+			case 2: text += "click dreapta"; break;
+		}
+		alert(text);
+	});
+
+	div5.addEventListener("wheel", (event) => {
+		text = "Mouse wheel pe div 5";
+
+		alert(text);
+	});
+
+	var div6 = document.getElementById("div6");
+	div6.addEventListener("click", f3);
+}
+
+function f1(){
+	alert("Div 1 apasat");
+}
+	
+function f2(){
+	alert("Div 2 apasat");
+}
+
+function f3(event) {
+
+	text = "Div 6 apasat, ";
+	text += "coordonate pe ecran: [" + event.clientX + ", " + event.clientY + "]";
+	
+	alert(text);
+}
+
+</script>
+
+</head>
+
+<body onLoad="init()">
+
+click pe containere
+
+<div OnClick="f1()">div 1, click</div>
+<div id="div2">div 2, click</div>
+<div id="div3">div 3, click</div>
+<div id="div4">div 4, click</div>
+<div id="div5">div 5, click sau miscare mouse wheel</div>
+<div id="div6">div 6, click</div>
+
+
+</body>
+</html>

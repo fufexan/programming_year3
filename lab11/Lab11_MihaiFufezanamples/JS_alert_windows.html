@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+<title>Ferestre alert, confirm, prompt</title>
+
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<link rel="stylesheet" href="http://helios.utcluj.ro/cosmin/WEB/CSS/style.css">
+
+<script>
+
+
+function f1() {
+	rez = confirm("Fereastra de confirmare sau refuzare a unei actiuni");
+	if(rez)
+		alert("Presupun ca ai ales OK");
+	else
+		alert("Presupun ca ai apasat Cancel");
+}
+
+function f2() {
+	rez = prompt("Fereastra de introducere de date cu confirmare", "text predefinit");
+	if(rez)
+		alert("Ai scris: "+rez+" \nsi ai apasat OK");
+	else
+		alert("Ai apasat Cancel");	
+
+}	
+
+</script>
+
+</head>
+
+<body>
+
+Ferestre de dialog pt. interactiunea cu utilizatorul
+<hr>
+<br>
+
+	<br> alert 
+	<a href='#' onclick='alert("Fereastra de tip Alert"); return false'>fereastra de tip Alert</a>
+
+	<br> confirm
+	<a href='javascript: f1();'>fereastra de tip Confirm</a>    
+
+	<br> prompt
+	<a href='#' onclick="f2();">fereastra de tip Prompt</a>    
+	
+
+</body>
+</html>

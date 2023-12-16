@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+<title>CSS control prin JS</title>
+
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<link rel="stylesheet" href="http://helios.utcluj.ro/cosmin/WEB/CSS/style.css">
+
+<script>
+
+	var initial_width, initial_height;
+	var max_height = 200;
+	var crt_height;
+	var increment = 10;
+	var delay = 50;
+
+	var my_div;
+
+	var resizing_type = "up";
+
+	function init(){
+		my_div = document.getElementById("my_div");
+		initial_width = my_div.style.width.substr(0, my_div.style.width.length-2);
+		initial_height = my_div.style.height.substr(0, my_div.style.height.length-2);
+		crt_height = parseInt(initial_height);
+		alert("Dimensiunile originale ale DIV-ului: "+initial_width+"px x "+initial_height+"px");		
+	}
+
+	function f1(){
+		resizing_type = "up";
+		resize();
+	}
+
+	function f2(){
+		resizing_type = "down";
+		resize();
+	}
+
+	function resize(){
+		
+		if(resizing_type=="up"){
+			if(crt_height<max_height){
+				crt_height+=increment;
+				//alert(crt_height);
+				my_div.style.height = crt_height+"px";
+				setTimeout("resize()", delay);
+			}				
+		}
+		if(resizing_type=="down"){
+			if(crt_height>initial_height){
+				crt_height-=increment;
+				//alert(crt_height);
+				my_div.style.height = crt_height+"px";
+				setTimeout("resize()", delay);
+			}				
+		}
+
+
+	}
+
+</script>
+
+</head>
+
+<body onLoad="init()">
+
+Redimensionarea unui DIV pe evenimentul OnMouseOver generat de un camp de adresa
+<hr>
+<br>
+
+	<a href="#" OnMouseOver="f1();" OnMouseOut="f2();">Mouse over pt. redimensionare</a><BR><BR>
+
+	<div id="my_div" style="padding: 3px; background-color: #555555; width: 200px; height: 50px; border=1px solid red;">fereastra este redimensionabila
+	</div>
+
+
+
+</body>
+</html>

@@ -1,0 +1,71 @@
+<!doctype html>
+
+<!--
+5. Dezvoltați o pagină web cu facilități JavaScript care definește un șir de valori numerice întregi. În 3
+componente de tip div (existente în pagină) se vor afișa:
+- valorile pozitive pare
+- numărul de elemente negative care sunt compuse din mai mult de 2 cifre, urmat de respectivele elemente
+- valorile care reprezintă minime locale (sunt încadrate de valori mai mari)
+-->
+
+<html>
+  <head>
+    <script>
+      let array = Array();
+
+      const genArray = () => {
+        while (array.length < 100) {
+          let num = Math.random() * 2;
+
+          if (num < 1) {
+            num *= -100;
+          } else {
+            num *= 50;
+          }
+
+          array.push(Math.floor(num));
+        }
+      };
+
+      genArray();
+
+      let localMinima = Array();
+      const findLocalMinima = () => {
+        let prev, crt, next;
+
+        for (let i = 2; i < array.length; i++) {
+          prev = array[i - 2];
+          crt = array[i - 1];
+          next = array[i];
+
+          if (prev > crt && crt < next) {
+            localMinima.push(crt);
+            i++;
+          }
+        }
+      };
+
+      findLocalMinima();
+
+      const run = () => {
+        let d1 = document.getElementById("d1");
+        let d2 = document.getElementById("d2");
+        let d3 = document.getElementById("d3");
+
+        let positiveEven = array.filter((e) => e % 2 == 0 && e > 0);
+        let greaterThan10 = array.filter((e) => e / 10 <= -1);
+
+        d1.innerHTML = "Positive even elements: " + positiveEven.join(", ");
+        d2.innerHTML =
+          `Negative elements with more than 2 digits (${greaterThan10.length}): ` +
+          greaterThan10.join(", ");
+        d3.innerHTML = "Local minima: " + localMinima.join(", ");
+      };
+    </script>
+  </head>
+  <body onLoad="run()">
+    <div id="d1"></div>
+    <div id="d2"></div>
+    <div id="d3"></div>
+  </body>
+</html>

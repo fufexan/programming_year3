@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <title>Evenimente de tastatura JS</title>
+
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <link
+      rel="stylesheet"
+      href="http://helios.utcluj.ro/cosmin/WEB/CSS/style.css"
+    />
+
+    <script>
+      var text_field;
+
+      function init() {
+        text_field = document.getElementById("input");
+        text_field.onkeydown = keyProcess;
+        text_field.focus();
+      }
+
+      function keyProcess(evt) {
+        var this_key = evt ? evt.which : window.event.keyCode;
+        //alert(this_key);
+
+        previous_text = text_field.value;
+
+        if (this_key < 48 || this_key > 57 || this_key != 8) {
+          evt.preventDefault();
+          return false;
+        }
+      }
+    </script>
+  </head>
+
+  <body onLoad="init()">
+    Filtrarea evenimentelor de tastatura
+    <hr />
+    <br />
+    Scrie un numar (altceva nici nu prea poti)...
+    <br /><input type="text" size="77" id="input" />
+    <br />
+  </body>
+</html>

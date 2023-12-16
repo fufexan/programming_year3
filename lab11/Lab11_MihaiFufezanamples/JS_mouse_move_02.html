@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+<title>Mouse move JS</title>
+
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<link rel="stylesheet" href="http://helios.utcluj.ro/cosmin/WEB/CSS/style.css">
+
+<script>
+
+var IE = document.all?true:false;
+
+if (!IE){
+	document.captureEvents(Event.MOUSEMOVE);
+}
+
+document.onmousemove = getMouseXY;
+
+var is_dragging = false;
+var offset_x;
+var offset_top;
+
+var layer, my_div;
+
+var tempX;
+var tempY;
+
+function init(){
+	layer = document.getElementById("layer0");
+	my_div = document.getElementById("my_div");
+}
+
+function getMouseXY(e) {
+	if (IE) {
+		tempX = event.clientX + document.body.scrollLeft;
+		tempY = event.clientY + document.body.scrollTop;
+	} 
+	else {  
+		tempX = e.pageX;
+		tempY = e.pageY;
+	}  
+
+	f1(tempX, tempY);
+}
+
+function startDragging(){
+	//alert("start");
+	is_dragging = true;
+	offset_top = tempY - parseInt(layer.style.top.substr(0, layer.style.top.length-2));
+	offset_left = tempX - parseInt(layer.style.left.substr(0, layer.style.left.length-2));
+}
+
+function stopDragging(){
+	is_dragging = false;
+}
+
+function f1(x, y){
+			
+	my_div.innerHTML = "Pozitia curenta a pointerului de mouse: "+x+", "+y;
+		
+	if(is_dragging){
+		left_pos = x - offset_left;
+		//alert(left_pos);
+		top_pos = y - offset_top;
+		//alert(offset_top);
+		layer.style.left = left_pos+"px";
+		layer.style.top = top_pos+"px";
+	}	
+}
+
+</script>
+
+</head>
+
+<body onLoad="init()">
+
+Imaginea din document poate fi "impinsa" cu ajutorul mouse-ului
+<HR>
+<BR>
+
+
+
+<div id="layer0" OnMouseOver="startDragging();" OnMouseOut="stopDragging();" style="position:absolute; left:200px; top:200px; width:100px; z-index: 1; visibility:visible">
+
+   	<img src="http://helios.utcluj.ro/cosmin/WEB/IMG/jack.jpg" width="100">
+
+</div>
+
+<div id="my_div">---</div>
+
+</body>
+</html>

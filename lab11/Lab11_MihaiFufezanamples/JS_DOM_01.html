@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+<title>DOM JS</title>
+
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<link rel="stylesheet" href="http://helios.utcluj.ro/cosmin/WEB/CSS/style.css">
+
+<script>
+
+
+var counter = 0;
+
+function f1() {
+	var my_div = document.getElementById("my_div");
+	additional_text = " new string"+counter; 
+	counter++;
+
+	my_div.innerHTML += additional_text;
+}	
+
+</script>
+
+</head>
+
+<body>
+
+Elemente DOM controlate prin JS
+<hr>
+<br>
+
+	<input type="button" OnClick="f1();" value="Click...">
+
+	<BR> text:
+	<BR><div id="my_div"></div>
+	
+
+</body>
+</html>

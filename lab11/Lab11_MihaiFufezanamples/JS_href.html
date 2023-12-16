@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+<title>Tratarea campurilor de adresa JS</title>
+
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<link rel="stylesheet" href="http://helios.utcluj.ro/cosmin/WEB/CSS/style.css">
+
+<script>
+
+function f1() {
+	alert("Hello (din functia f1)");
+}
+
+</script>
+
+</head>
+
+<body>
+
+Tratarea campurilor HREF prin JavaScript
+<HR>
+<BR>
+
+	<BR> method 1
+	<a href='#' onclick='alert("hello (eveniment onClick)"); return false'>hello</a>
+
+	<BR> method 2
+	<a href='javascript:alert("hello (cod JS inline)")'>hello</a>    
+
+	<BR> method 3
+	<a href='#' onclick="f1();">hello</a>    
+
+
+</body>
+</html>
